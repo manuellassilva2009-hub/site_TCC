@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChemLab - Laboratório Virtual & Loja</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Cabeçalho / Navegação -->
+    <header class="header">
+        <div class="logo">🧪 ChemLab</div>
+        <nav class="nav">
+            <a href="#catalogo">Catálogo</a>
+            <a href="experimentos.html">Experimentos</a>
+            <a href="recursos.html">Recursos</a>
+            <a href="#carrinho" class="cart-link">
+                🛒 Carrinho (<span id="cart-count">0</span>)
+            </a>
+            <button id="btn-open-login" class="btn-secondary">Entrar</button>
+            <button id="btn-open-register" class="btn-primary">Cadastrar</button>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- Hero Section original expandido -->
+        <section class="hero">
+            <h1>Bem-vindo ao ChemLab</h1>
+            <p>Explore o mundo da química com nossos experimentos interativos, recursos educacionais e equipamentos de laboratório.</p>
+            <div class="links">
+                <a href="experimentos.html" class="btn-hero">Ver Experimentos</a>
+                <a href="recursos.html" class="btn-hero btn-hero-alt">Recursos</a>
+            </div>
+        </section>
+
+        <!-- Catálogo de Produtos e Kits de Química -->
+        <section id="catalogo" class="catalog-section">
+            <h2>Catálogo de Equipamentos e Reativos</h2>
+            
+            <div class="catalog-filters">
+                <input type="text" id="search-input" placeholder="Buscar reagente, kit ou vidro...">
+                <select id="category-filter">
+                    <option value="all">Todas as Categorias</option>
+                    <option value="vidrarias">Vidrarias</option>
+                    <option value="kits">Kits Práticos</option>
+                    <option value="reativos">Reativos</option>
+                </select>
+            </div>
+
+            <div class="product-grid" id="productGrid">
+                <!-- Produto 1 -->
+                <div class="product-card">
+                    <h3>Kit Química Educacional</h3>
+                    <img src="/images/kit.jpg" alt="Kit Química Educacional" weight="220" height="220">
+                    <p class="category">Kits Práticos</p>
+                    <p class="price">R$ 189,90</p>
+                    <button class="btn-add-cart" data-id="1" data-name="Kit Química Educacional" data-price="189.90">Adicionar ao Carrinho</button>
+                </div>
+
+                <!-- Produto 2 -->
+                <div class="product-card">
+                    <h3>Béquer Graduado 250ml</h3>
+                    <img src="/images/becker.webp" alt="Béquer Graduado 250ml" weight="220" height="220">
+                    <p class="category">Vidrarias</p>
+                    <p class="price">R$ 24,90</p>
+                    <button class="btn-add-cart" data-id="2" data-name="Béquer Graduado 250ml" data-price="24.90">Adicionar ao Carrinho</button>
+                </div>
+
+                <!-- Produto 3 -->
+                <div class="product-card">
+                    <h3>Frasco Erlenmeyer 500ml</h3>
+                    <img src="/images/frasco.jpg" alt="Frasco Erlenmeyer 500ml" weight="220" height="220">
+                    <p class="category">Vidrarias</p>
+                    <p class="price">R$ 38,50</p>
+                    <button class="btn-add-cart" data-id="3" data-name="Frasco Erlenmeyer 500ml" data-price="38.50">Adicionar ao Carrinho</button>
+                </div>
+
+                <!-- Produto 4 -->
+                <div class="product-card">
+                    <h3>Tiras Indicadoras de pH</h3>
+                    <img src="/images/Tiras_PH.jpg" alt="Tiras Indicadoras de pH" weight="220" height="220">
+                    <p class="category">Reativos</p>
+                    <p class="price">R$ 15,00</p>
+                    <button class="btn-add-cart" data-id="4" data-name="Tiras Indicadoras de pH" data-price="15.00">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Carrinho de Compras -->
+        <section id="carrinho" class="cart-section">
+            <h2>Seu Carrinho de Compras</h2>
+            <div class="cart-container">
+                <table class="cart-table">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Preço</th>
+                            <th>Qtd.</th>
+                            <th>Subtotal</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cart-items">
+                        <tr>
+                            <td colspan="5" class="empty-cart-msg">Seu carrinho do ChemLab está vazio.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="cart-summary">
+                    <div class="total-box">
+                        <span>Total:</span>
+                        <strong>R$ <span id="cart-total">0,00</span></strong>
+                    </div>
+                    <button id="btn-checkout" class="btn-success">Finalizar Pedido</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal de Cadastro -->
+        <div id="register-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal" id="close-register">&times;</span>
+                <h2>Cadastrar no ChemLab</h2>
+                <form id="register-form">
+                    <div class="form-group">
+                        <label for="reg-name">Nome Completo</label>
+                        <input type="text" id="reg-name" required placeholder="Seu nome">
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-email">E-mail</label>
+                        <input type="email" id="reg-email" required placeholder="seu@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-password">Senha</label>
+                        <input type="password" id="reg-password" required placeholder="Sua senha">
+                    </div>
+                    <button type="submit" class="btn-primary full-width">Criar Conta</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Modal de Login (Post /api/login) -->
+        <div id="login-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal" id="close-login">&times;</span>
+                <h2>Entrar no ChemLab</h2>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="login-email">E-mail</label>
+                        <input type="email" id="login-email" required placeholder="seu@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Senha</label>
+                        <input type="password" id="login-password" required placeholder="******">
+                    </div>
+                    <button type="submit" class="btn-primary full-width">Entrar</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
